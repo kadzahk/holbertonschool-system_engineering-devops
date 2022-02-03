@@ -1,1 +1,2 @@
-**Rr** __rr__
+#!/bin/bash
+Este es el readme del directorio
