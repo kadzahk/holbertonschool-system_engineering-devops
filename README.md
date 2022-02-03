@@ -1,1 +1,2 @@
-# holberton-system_engineering-devops
+#!/bin/bash
+Este es el readme del directorio
