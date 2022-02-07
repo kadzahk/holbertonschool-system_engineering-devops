@@ -1,1 +1,1 @@
-Este es el readme del directorio
+This project is about shell basic commands and scripts
