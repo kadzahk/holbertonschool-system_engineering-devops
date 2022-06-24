@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Bash script - print Holberton School 10 times with while loop
+index=1
+while [ $index -le 10 ];
+do
+    echo "Holberton School"
+    let index=index+1
+done
