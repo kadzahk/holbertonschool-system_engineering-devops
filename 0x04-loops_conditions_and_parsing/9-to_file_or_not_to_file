@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#  Script bash gives you information about the holbertonschool file
+#  Script bash - gives you information about the holbertonschool file
 
 file="holbertonschool"
 
