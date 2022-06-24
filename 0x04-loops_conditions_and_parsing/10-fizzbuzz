@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#  Script bach FizzBuzz
+#  Script bach - FizzBuzz
 
 index=1
 
