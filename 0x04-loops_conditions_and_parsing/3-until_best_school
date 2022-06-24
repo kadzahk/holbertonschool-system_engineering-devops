@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # displays until loop Holberton School 10 times
 index=0
-until [ "$index" -eq 10 ]; do
-      echo "Holberton School"
-      let index=index+1
+
+until [ $index -eq 10 ]
+do
+	echo "Best School"
+	index=$((index+1))
 done
