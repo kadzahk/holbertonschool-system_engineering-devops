@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # Bash script - prints "Holberton School" 10 times and "Hi" in 9th iteration times
-index=0
-while [ $index -lt 10 ];
+index=1
+while [ $index -le 10 ]
 do
-    if [ $index -eq 9 ]
-    then
-echo "Hi"
-    fi
-    echo "Holberton School"
-    let index=index+1
+	echo "Best School"
+	if ((index==9)) 
+then
+	echo "Hi"
+fi
+index=$((index+1))
 done
