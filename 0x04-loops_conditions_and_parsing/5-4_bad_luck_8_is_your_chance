@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# script displaying " good luck" "Holberton School" "bad luck" 
+index=0
+while [ $index -lt 10 ];
+do
+    if [ $index -eq 3 ]
+    then
+echo "bad luck"
+    elif [ $index -eq 7 ]
+    then
+echo "good luck"
+    else
+echo "Holberton School"
+    fi
+    let index=index+1
+done
