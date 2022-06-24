@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#  Script bach FizzBuzz
+
+index=1
+
+while [ $index -lt 101 ]
+do
+    if ! (( index%15 ))
+    then
+	echo "FizzBuzz"
+    elif ! (( index%3 ))
+    then
+        echo "Fizz"
+    elif ! (( index%5 ))
+    then
+	echo "Buzz"
+    else
+	echo $index
+    fi
+    index=$(( index+1 ))
+done
