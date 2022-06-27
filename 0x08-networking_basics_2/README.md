@@ -1,23 +1,17 @@
-# 0x06. Regular expression
+# 
+0x08. Networking basics #1
 
 ## Learning Objectives
 
-General
+## General
+<ul>
+<li>What is localhost/127.0.0.1</li>
+<li>What is 0.0.0.0</li>
+<li>What is <code>/etc/hosts</code></li>
+<li>How to display your machine’s active network interfaces</li>
+</ul>
 
-- For this project, you have to build your regular expression using Oniguruma, a regular expression library that which is used by Ruby by default. Note that other regular expression libraries sometimes have different properties.
 
-- Because the focus of this exercise is to play with regular expressions (regex), here is the Ruby code that you should use, just replace the regexp part, meaning the code in between the //:
-
-```
-sylvain@ubuntu$ cat example.rb
-#!/usr/bin/env ruby
-puts ARGV[0].scan(/127.0.0.[0-9]/).join
-sylvain@ubuntu$
-sylvain@ubuntu$ ./example.rb 127.0.0.2
-127.0.0.2
-sylvain@ubuntu$ ./example.rb 127.0.0.1
-127.0.0.1
-```
 
 ## Requirements
 <ul>
@@ -25,9 +19,10 @@ sylvain@ubuntu$ ./example.rb 127.0.0.1
 <li>All your files will be interpreted on Ubuntu 20.04 LTS</li>
 <li>All your files should end with a new line</li>
 <li>A <code>README.md</code> file, at the root of the folder of the project, is mandatory</li>
-<li><strong>All your script files must be executable</strong></li>
-<li>The first line of all your Bash scripts should be exactly <code>#!/usr/bin/env ruby</code></li>
-<li>All your regex must be built for the Oniguruma library</li>
+<li>All your Bash script files must be executable</li>
+<li>Your Bash script must pass <code>Shellcheck</code> (version <code>0.7.0</code> via <code>apt-get</code>) without any errors</li>
+<li>The first line of all your Bash scripts should be exactly <code>#!/usr/bin/env bash</code></li>
+<li>The second line of all your Bash scripts should be a comment explaining what is the script doing</li>
 </ul>
 
 ### Authors
