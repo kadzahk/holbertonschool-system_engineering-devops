@@ -1,6 +1,6 @@
-# Script that installs a package, here: puppet-lint
+# Script that installs a package, here: flask
 
-package { 'puppet-lint':
-  ensure   => '2.4.2',
-  provider => 'gem',
+package { 'flask':
+  ensure   => '2.1.0',
+  provider => 'pip3',
 }
