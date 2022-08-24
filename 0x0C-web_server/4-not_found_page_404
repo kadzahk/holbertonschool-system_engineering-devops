@@ -1,18 +1,13 @@
 #!/usr/bin/env bash
-# 3. Redirection
-sudo apt-get -y update
-sudo apt-get -y install nginx
-sudo chmod 777 /var/www/html/index.nginx-debian.html
-echo "Hello World!" > /var/www/html/index.nginx-debian.html
-sudo service nginx start
-sudo chmod 777 /etc/nginx/sites-available/
-sudo chmod 777 /etc/nginx/sites-available/default
-sed -i "/listen 80 default_server;/ a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default
-
-# Add custom 404 page error
-sudo chmod 777 /var/www/html
-sudo chmod 777 /var/www/html/404_not_found.html
-echo "Ceci n'est pas une page" > /var/www/html/404_not_found.html
-sed -i "/listen 80 default_server;/ a error_page 404 /404_not_found.html;" /etc/nginx/sites-available/default
-
-sudo service nginx restart
+# install a new Nginx web server, and configure it to have to have a custom 404 page that contains the string Ceci n'est pas une page
+apt-get update
+apt-get -y install nginx
+ufw allow 'Nginx HTTP'
+mv /var/www/html/index.nginx-debian.html /var/www/html/save_index.nginx-debian.html
+echo "Holberton School for the win!" > /var/www/html/index.nginx-debian.html
+cp /etc/nginx/sites-available/default /etc/nginx/sites-available/save_default
+sed -i "/server_name _;/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" > /usr/share/nginx/html/404.html
+cp /etc/nginx/sites-available/default /etc/nginx/sites-available/another_save_default
+sed -i "/server_name _;/a error_page 404 /404.html;\nlocation = /404.html {\nroot /usr/share/nginx/html;\ninternal;\n}" /etc/nginx/sites-available/default
+service nginx start
