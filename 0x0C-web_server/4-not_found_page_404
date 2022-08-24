@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# 3. Redirection
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo chmod 777 /var/www/html/index.nginx-debian.html
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+sudo service nginx start
+sudo chmod 777 /etc/nginx/sites-available/
+sudo chmod 777 /etc/nginx/sites-available/default
+sed -i "/listen 80 default_server;/ a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default
+
+# Add custom 404 page error
+sudo chmod 777 /var/www/html
+sudo chmod 777 /var/www/html/404_not_found.html
+echo "Ceci n'est pas une page" > /var/www/html/404_not_found.html
+sed -i "/listen 80 default_server;/ a error_page 404 /404_not_found.html;" /etc/nginx/sites-available/default
+
+sudo service nginx restart
