@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
-# Configure ufw so that it blocks all incoming traffic, except the following TCP ports:
-# 22 (SSH)
-# 443 (HTTPS SSL)
-# 80 (HTTP)
-apt-get install ufw -y
-ufw allow ssh
-ufw allow http
-ufw allow https
-ufw enable
+# Let’s install the ufw firewall and setup a few rules on web-01.
+sudo apt-get -y update
+sudo apt-get -y install ufw
+sudo ufw default deny incoming
+sudo ufw allow 22/tcp
+sudo ufw allow 443/tcp
+sudo ufw allow 80/tcp
+sudo ufw enable
