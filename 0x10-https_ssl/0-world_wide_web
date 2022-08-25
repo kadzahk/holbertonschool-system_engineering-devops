@@ -1,18 +1,17 @@
 #!/usr/bin/env bash
-# Configure your domain zone so that the subdomain www points to your load-balancer IP (lb-01).
+# Bash script that displays information about subdomains
 
-print_info(){
-    domain=$1
-    subdomain=$2
-    line=$(dig "$subdomain"."$domain" | grep -A1 'ANSWER SECTION:' | awk ' NR==2 {print "The subdomain " $1 " is a " $4 " record and points to " $5}')
-    echo "${line/$subdomain.$domain./$subdomain}"
+func () {
+    if [ -z "$2" ]
+    then
+	dig www."$1" | grep -A1 'ANSWER SECTION:' | awk '/www/ {print "The subdomain www is a "$(NF - 1)" record and points to "$NF}'
+	dig lb-01."$1" | grep -A1 'ANSWER SECTION:' | awk '/lb-01/ {print "The subdomain lb-01 is a "$(NF - 1)" record and points to "$NF}'
+	dig web-01."$1" | grep -A1 'ANSWER SECTION:' | awk '/web-01/ {print "The subdomain web-01 is a "$(NF - 1)" record and points to "$NF}'
+	dig web-02."$1" | grep -A1 'ANSWER SECTION:' | awk '/web-02/ {print "The subdomain web-02 is a "$(NF - 1)" record and points to "$NF}'
+    else
+	dig "$2"."$1" | grep -A1 'ANSWER SECTION:' | awk -v SUBDOMAIN="$2" "/$2/"'{print "The subdomain "SUBDOMAIN" is a "$(NF - 1)" record and points to "$NF}'
+    fi
+    return 0
 }
-if [ "$#" == 1 ]
-then
-    print_info "$1" 'www'
-    print_info "$1" 'lb-01'
-    print_info "$1" 'web-01'
-    print_info "$1" 'web-02'
-else
-    print_info "$1" "$2"
-fi
+
+func "$1" "$2"
